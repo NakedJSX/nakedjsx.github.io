@@ -32,7 +32,7 @@ jobs:
           npx nakedjsx documentation/src --out _site/documentation
 
       - name: Create Pages A
-        uses: actions/upload-pages-artifact
+        uses: actions/upload-pages-artifact@v1
         with:
           path: _site
   
