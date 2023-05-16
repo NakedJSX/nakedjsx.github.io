@@ -1,5 +1,7 @@
 name: Build
-concurrency: 
+on: 
+  workflow_dispatch:
+concurrency:
   group: Build
   cancel-in-progress: true
 
