@@ -14,10 +14,7 @@ const Body =
     () =>
     <>
         <main>
-            <h1 css="
-                    border-bottom: 1px solid var(--fg-color);
-                    & svg { display: inline }
-                "><raw-content content={logo} /> Coming Soon.</h1>
+            <h1><raw-content content={logo} /> Coming Soon.</h1>
         </main>
     </>
 

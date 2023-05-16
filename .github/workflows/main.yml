@@ -31,7 +31,7 @@ jobs:
           npx nakedjsx src --out _site
           npx nakedjsx documentation/src --out _site/documentation
 
-      - name: Create Pages A
+      - name: Create Pages Artifact
         uses: actions/upload-pages-artifact@v1
         with:
           path: _site
