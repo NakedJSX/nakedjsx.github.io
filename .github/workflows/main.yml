@@ -1,5 +1,28 @@
-- name: Setup Node.js
-  uses: actions/setup-node@v2.5.2
-  with:
-    node-version: '18'
-    check-latest: true
+name: Build
+concurrency: 
+  group: Build
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build nakedjsx.github.io
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          check-latest: true
+
+      - shell: bash
+        run: git config --global core.autocrlf input
+      
+      - name: Checkout Source
+        uses: actions/checkout@v2
+
+      - name: Build Documentation
+        shell: bash
+        run: |
+          cd nakedjsx.github.io/documentation
+          npx nakedjsx src --output-dir dist
