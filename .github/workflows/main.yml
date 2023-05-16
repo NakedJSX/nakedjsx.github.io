@@ -23,10 +23,13 @@ jobs:
       - name: Checkout Source
         uses: actions/checkout@v3
         with:
-          submodules: 'recursive'
+          submodules: true
 
       - name: Build Documentation
         shell: bash
         run: |
-          cd nakedjsx.github.io/documentation
+          pwd
+          ls -l
+          find . -type d
+          cd documentation
           npx nakedjsx src --output-dir dist
