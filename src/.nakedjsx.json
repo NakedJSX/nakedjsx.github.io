@@ -1,0 +1,9 @@
+{
+    "pathAliases": {
+        "$ASSET": "../documentation/asset"
+    },
+    "definitions": {},
+    "browserslistTargetQuery": "defaults",
+    "plugins": [],
+    "commonCssFile": "$ASSET/style.css"
+}
