@@ -36,7 +36,7 @@ jobs:
         with:
           path: _site
   
-  deploy:
+  Deploy:
     needs: build
 
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
