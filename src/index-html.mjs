@@ -1,6 +1,7 @@
 import { Page } from '@nakedjsx/core/page'
 
 import logo from ':raw:$ASSET/logo.svg'
+import { Analytics } from '../documentation/src/common.jsx'
 
 const Head =
     () =>
@@ -14,11 +15,13 @@ const Body =
     () =>
     <>
         <main>
-            <h1><raw-content content={logo} /> Coming Soon.</h1>
+            <h1><raw-content content={logo} /></h1>
+            <p>Launching May 28, 2023.</p>
         </main>
     </>
 
 Page.Create('en');
 Page.AppendHead(<Head/>);
+Page.AppendHead(<Analytics />);
 Page.AppendBody(<Body/>);
 Page.Render();
