@@ -3,7 +3,7 @@ import { Page } from '@nakedjsx/core/page'
 import logo from ':raw:$DOC_ASSET/logo.svg'
 import prismTheme from ':raw:@nakedjsx/plugin-asset-prism/theme.css';
 
-import { Inline } from '$DOC_SRC/common.jsx'
+import { Inline, Analytics } from '$DOC_SRC/common.jsx'
 import { Example } from '$DOC_SRC/example.jsx'
 
 const title = "Static Site Generator.";
@@ -52,11 +52,13 @@ const Body =
     <main>
         <h1><raw-content content={logo} /> {title}</h1>
         <p>{description}</p>
+        <p>No need to set up a Node.js project - just run an npx command on some content files and your site is built.</p>
+        <p>NakedJSX also provides a tiny (630 byte!) and unopinionated runtime allowing JSX to be used in client JavaScript. Just some functions for making DOM nodes - how and why the page updates is entirely up to you.</p>
         <p><a href="documentation">You can find detailed documentation here</a>.</p>
         
         <h2>A Two Minute Test</h2>
         <Example captureOutput={['example', 'hello-nakedjsx']}>
-            <p>If you have Node.js installed, you can play with it now. Create a directory called <Inline>src</Inline> and in it a file called <Inline>index-page.jsx</Inline>:</p>
+            <p>If you have Node.js installed, you can try it right now. Create a directory called <Inline>src</Inline> and in it place a single file called <Inline>index-page.jsx</Inline>:</p>
             <Example.Src lang="jsx" filename="src/index-page.jsx">{
                 exampleSource
             }</Example.Src>
@@ -64,6 +66,7 @@ const Body =
             <Example.BuildCmd />
             <p>The result is a new subdirectory called <Inline>out</Inline>, which contains a single HTML file:</p>
         </Example>
+        <p>Note that the scoped CSS was extracted from JSX, minified, and then deduplicated.</p>
         <Example buildFlags={[]} wordwrapOutput captureOutput={['example', 'hello-nakedjsx-dist']}>
             <Example.Src hidden lang="jsx" filename="src/index-page.jsx">{
                 exampleSource
@@ -96,13 +99,12 @@ const Body =
         <p>Please refer to the <a href="documentation">detailed documentation</a> for more information.</p>
         
         <h2 id="author">Author</h2>
-
         <p>
             Hello, I'm David Hogan. Since 1999 I have been a professional software engineer, a startup/scaleup CTO,
-            and everything in between. I am a current member of the VICE (Commodore 8-bit computer emulator) development team.
+            and everything hands-on technical in between. I am a current member of the VICE (Commodore 8-bit computer emulator) development team.
         </p>
         <p>
-            I designed and built NakedJSX for fun. I would love to hear your feedback!
+            I designed and built NakedJSX for fun and I hope you find it useful. I would love to hear your feedback!
         </p>
         <p>
             You can reach me via <a href="mailto:contact@nakedjsx.com">Email</a>
@@ -110,7 +112,7 @@ const Body =
             , and at the <a href="https://discord.gg/BXQDtub2fS">NakedJSX Discord Server</a>.
         </p>
         <p>
-            I am based in Melbourne, Australia, and currently available for hybrid or remote contract work. 
+            I am based in Melbourne, Australia, and will soon be available for hybrid or remote contract work. 
         </p>
 
         {/* <h2 id="philosophy">Design Philosophy</h2>
@@ -181,6 +183,7 @@ const Body =
 
 Page.Create('en');
 Page.AppendHead(<Head/>);
+Page.AppendHead(<Analytics />);
 Page.AppendCss(prismTheme);
 Page.AppendBody(<Body/>);
 Page.Render();
