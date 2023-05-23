@@ -1,9 +1,10 @@
 {
     "pathAliases": {
-        "$ASSET": "../documentation/asset"
+        "$DOC_ASSET": "../documentation/asset",
+        "$DOC_SRC": "../documentation/src"
     },
     "definitions": {},
     "browserslistTargetQuery": "defaults",
     "plugins": [],
-    "commonCssFile": "$ASSET/style.css"
+    "commonCssFile": "$DOC_ASSET/style.css"
 }
