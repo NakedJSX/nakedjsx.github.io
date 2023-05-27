@@ -27,8 +27,8 @@ const Dep =
     <>
         <h3>{name}</h3>
         <p css="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--link-color)">
-            <a href={url}>{url}</a>
-            {donate && <><br/><a href={donate}>Donate</a></>}
+            <a href={url}>{url.replace(/^https:\/\//, '')}</a>
+            {donate && <><br/><a href={donate}>donate</a></>}
         </p>
         {children}
         {plugins && <p css="font-size: 1rem">* {plugins}</p>}
@@ -59,12 +59,12 @@ const Body =
             <h1><raw-content content={logo} /> {title}</h1>
             <p>{description}</p>
             <p>There is no need to set up a Node.js project - just run an npx command on your NakedJSX content directory and your site is built.</p>
-            <p>A live-refresh development webserver is included for a comfortable developer experience. Stepping through page generation JSX in a debugger is supported.</p>
-            <p>NakedJSX also provides a tiny (630 byte) and unopinionated runtime allowing JSX to be used in client JavaScript. Just some internal functions support the construction of DOM nodes - how and why the page updates is entirely up to you.</p>
+            <p>A live-refresh development webserver is included for a comfortable developer experience.</p>
+            <p>NakedJSX optionaly provides a tiny (630 byte) runtime allowing JSX to be used by your client JavaScript.</p>
             <p><a href="documentation">You can find detailed documentation here</a>.</p>
             
             <h2 id="a-quick-test">A Two Minute Test</h2>
-            <Example captureOutput={['example', 'hello-nakedjsx']}>
+            <Example captureOutput={['example', 'hello-nakedjsx-pretty']}>
                 <p>If you have Node.js installed, you can try it right now. Create a directory called <Inline>src</Inline> with the following file:</p>
                 <Example.Src lang="jsx" filename="src/index-page.jsx">{
                     exampleSource
@@ -103,7 +103,7 @@ const Body =
                 <li>Asset import plugin system</li>
             </ul>
 
-            <p>Please refer to the <a href="documentation">detailed documentation</a> for more information.</p>
+            <p>Please refer to the <a href="documentation">detailed documentation</a> for an in-depth look.</p>
             
             <h2 id="philosophy">Design Philosophy</h2>
 
@@ -112,19 +112,19 @@ const Body =
             <p>Of course, you can add any browser JavaScript you like, and if NakedJSX builds that code for you then it can use JSX to create DOM nodes.</p>
             
             <h3>Low-Friction</h3>
-            <p>NakedJSX doesn't require the setting up and maintaining of a Node.js project. Just create the site files and run the npx command.</p>
+            <p>NakedJSX doesn't require the setting up and maintaining of a Node.js project. Just create the site files and run the npx command to build.</p>
 
             <h3>API Stability (After 1.0.0 Release)</h3>
             <p>NakedJSX sites should continue build with newer versions of NakedJSX.</p>
             <p>
-                The nature of <Inline>npx</Inline> is that it will remain possible to specify a NakedJSX version to use: <Inline>npx nakedjsx@0.8</Inline> will 
-                use latest 0.8.x version, <Inline>npx nakedjsx@0.8.0</Inline> will use version 0.8.0, <Inline>npx nakedjsx@1</Inline> will use latest version 1.x.y, etc.
+                The nature of <Inline>npx</Inline> is that it will remain possible to specify a NakedJSX version to use: <Inline>npx nakedjsx@0.10</Inline> will 
+                use latest 0.10.x version, <Inline>npx nakedjsx@0.10.0</Inline> will use version 0.10.0, <Inline>npx nakedjsx@1</Inline> will use latest version 1.x.y, etc.
             </p>
             
             <h3>Conservative Dependency Choices</h3>
             <p>
                 Where practical, required functionality is implemented directly within NakedJSX.
-                In other cases, well known and well maintained <a href="#acknowledgments">external dependencies</a> are chosen.
+                In other cases, well known and well maintained external dependencies are chosen.
             </p>
             
             <h3>Security Compliance</h3>
@@ -182,8 +182,7 @@ const Body =
                 and everything in between. I am a current member of the VICE (Commodore 8-bit computer emulator) development team.
             </p>
             <p>
-                I designed and built NakedJSX by following my curiosity and I hope that you find it useful. I would appreciate any
-                feedback you might offer, especially before version 1.0.0.
+                I designed and built NakedJSX by following my curiosity and I hope that you find it useful.
             </p>
             <p>
                 You can reach me via <a href="mailto:contact@nakedjsx.com">Email</a>
