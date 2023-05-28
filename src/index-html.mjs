@@ -155,6 +155,11 @@ const Body =
                     <li>CSS manipulation</li>
                 </ul>
             </Dep>
+            <Dep name="js-beautify" url="https://github.com/beautify-web/js-beautify#readme">
+                <ul>
+                    <li>Pretty printing of HTML, CSS and JavaScript code</li>
+                </ul>
+            </Dep>
             <Dep name="Node.js" url="https://nodejs.org">
                 <ul>
                     <li>JavaScript runtime environment and API</li>
@@ -164,6 +169,9 @@ const Body =
                 <ul>
                     <li>Transpilation of nested CSS into flat CSS</li>
                 </ul>
+            </Dep>
+            <Dep name="React" url="https://react.dev">
+                NakedJSX does not use React, but the excellent ideas and work of the React team must be acknowledged.
             </Dep>
             <Dep name="Rollup" url="https://rollupjs.org" doante="https://opencollective.com/rollup" plugins="Plus @rollup/plugin-babel, @rollup/plugin-dynamic-import-vars, and @rollup/plugin-inject plugins.">
                 <ul>
@@ -176,10 +184,6 @@ const Body =
                     <li>JavaScript optmisation / compression</li>
                 </ul>
             </Dep>
-            <Dep name="React" url="https://react.dev">
-                NakedJSX does not use React, but it would be dishonest not to acknowledge the excellent ideas and work
-                of the React team.
-            </Dep>
 
             <h2 id="author">Project Owner</h2>
             <p>
@@ -187,7 +191,7 @@ const Body =
                 and everything in between. I am a current member of the VICE (Commodore 8-bit computer emulator) development team.
             </p>
             <p>
-                I designed and built NakedJSX by following my curiosity and I hope that you find it useful. And ideally, as delightful to use as I find it.
+                I designed and built NakedJSX by following my curiosity and I hope that you find it useful.
             </p>
             <p>
                 You can reach me via <a href="mailto:contact@nakedjsx.com">Email</a>
