@@ -16,7 +16,8 @@ const Body =
     <>
         <main>
             <h1><raw-content content={logo} /></h1>
-            <p>Launching May 28, 2023.</p>
+            <p>Launching Late May, 2023.</p>
+            <p>Still working on documentation.</p>
         </main>
     </>
 
