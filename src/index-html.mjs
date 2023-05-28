@@ -176,6 +176,10 @@ const Body =
                     <li>JavaScript optmisation / compression</li>
                 </ul>
             </Dep>
+            <Dep name="React" url="https://react.dev">
+                NakedJSX does not use React, but it would be dishonest not to acknowledge the excellent ideas and work
+                of the React team.
+            </Dep>
 
             <h2 id="author">Project Owner</h2>
             <p>
