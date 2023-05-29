@@ -17,7 +17,12 @@ jobs:
           node-version: '18'
           check-latest: true
 
-      - shell: bash
+      - name: Install GraphicsMagick
+        shell: bash
+        run: sudo apt install graphicsmagick
+
+      - name: Configuire Git
+        shell: bash
         run: git config --global core.autocrlf input
       
       - name: Checkout Source
