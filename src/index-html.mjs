@@ -14,6 +14,7 @@ const Head =
     <>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description}></meta>
         <meta property="og:type" content="website"></meta>
         <meta property="og:url" content="https://nakedjsx.org"></meta>
         <meta property="og:title" content={`NakedJSX - ${title}`}></meta>
@@ -25,12 +26,27 @@ const Head =
 const Dep =
     ({ name, url, donate, plugins, children }) =>
     <>
-        <h3>{name}</h3>
-        <p css="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--link-color)">
-            <a href={url}>{url.replace(/^https:\/\//, '')}</a>
-            {donate && <><br/><a href={donate}>donate</a></>}
-        </p>
+        <h3 css={`
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            a {
+                font-size: 0.875rem;
+                font-weight: normal;
+            }
+        `}>
+            <span css="flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{name}</span>
+            {donate && <a href={donate}>(donate)</a>}
+        </h3>
         {children}
+        <p css={`
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        `}>
+            <a href={url} css="flex-grow: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap">{url.replace(/^https:\/\//, '')}</a>
+        </p>
         {plugins && <p css="font-size: 1rem">* {plugins}</p>}
     </>
 
@@ -52,17 +68,35 @@ Page.AppendHead(<title>Hello NakedJSX</title>);
 Page.AppendBody(<BodyContent title="Hello NakedJSX" />);
 Page.Render();`;
 
+const Inset =
+    ({ children }) =>
+    <p css={`
+        padding: var(--gap-three-eighths-2) var(--gap);
+        background-color: var(--code-bg-color);
+    `}>
+        {children}
+    </p>
+
 const Body =
     () =>
     <>
         <main>
             <h1><raw-content content={logo} /> {title}</h1>
             <p>{description}</p>
-            <p>There is no need to set up a Node.js project - just run an npx command on your NakedJSX content directory and your site is built into an output folder.</p>
-            <p>A development mode with a live-refresh webserver is included.</p>
-            <p>NakedJSX also provides an optional & very small runtime allowing JSX to be used by client JavaScript. This page uses it for providing visual feedback when copying code to the clipboard.</p>
-            <p>This page was built by NakedJSX. <a href={'https://github.com/NakedJSX/nakedjsx.github.io/blob/main/src/index-html.mjs'}>You can look at the source</a>.</p>
-            <p><a href="documentation">You can find detailed documentation here</a>.</p>
+            <Inset>
+                This is an overview. Please refer to the <a href="documentation">documentation</a> for a detailed look at each feature.
+            </Inset>
+            <p>This page was built by NakedJSX. You can look at its <a href={'https://github.com/NakedJSX/nakedjsx.github.io/blob/main/src/index-html.mjs'}>source</a>.</p>
+            
+            <h2>At a Glance</h2>
+            <p>Generate static HTML files from JSX by running an npx command.</p>
+            <p>Scoped CSS classes are extracted from JSX and deduplicated.</p>
+            <p>No need to set up a Node.js project, just run an npx command on your NakedJSX content directory and your site is built into an output folder.</p>
+            <p>A development mode with a live-refresh build and web server is included.</p>
+            <p>
+                NakedJSX provides an <a href="https://github.com/NakedJSX/core/blob/main/runtime/client/jsx.mjs">optional and small runtime</a> allowing JSX
+                to be used by client-side JavaScript. The runtime is automatically injected if needed.
+            </p>
             
             <h2 id="a-quick-test">A Two Minute Test</h2>
             <Example captureOutput={['example', 'hello-nakedjsx-pretty']}>
@@ -82,7 +116,7 @@ const Body =
                 <p>If you build it without the <Inline>--pretty</Inline> flag, the result is tightly packed and suitable for distribution:</p>
             </Example>
             <p>If you build with the <Inline>--dev</Inline> flag then a live-refresh development webserver will be started.</p>
-            <p>Having a simple way to build HTML and CSS from JSX is a good start, but NakedJSX can a lot more.</p>
+            <p>Having a simple way to build HTML files from JSX is a good start, but NakedJSX can a lot more.</p>
             
             <h2 id="features">Features</h2>
             <ul>
@@ -98,43 +132,48 @@ const Body =
                 <li>Convert images to webp</li>
                 <li>Embed raw asset files in HTML (useful for SVG)</li>
                 <li>Client JavaScript minification</li>
-                <li>Use of JSX in client JavaScript</li>
+                <li>Use JSX in client JavaScript</li>
                 <li>Embed predefined values at build time</li>
                 <li>Configurable import path aliases</li>
                 <li>Asset import plugin system</li>
             </ul>
 
-            <p>Please refer to the <a href="documentation">detailed documentation</a> for an in-depth look.</p>
+            <Inset>
+                You can find detailed information in the <a href="documentation">documentation</a>.
+            </Inset>
+
+            <h2>Project Status</h2>
+            <p>NakedJSX is subject to design changes until version 1.0.</p>
+            <p>Until then breaking changes will be linked to Y increments in X.Y.Z. Breaking changes after 1.0 will be linked to increments in X and will be avoided if possible.</p>
+            <p>Detailed release announcements are currently made on the <a href="https://discord.gg/BXQDtub2fS">NakedJSX Discord Server</a> - you are invited to join it.</p>
+            <p>You can also get in touch via <a href="mailto:contact@nakedjsx.org">contact@nakedjsx.org</a>.</p>
+            <p>Your feedback is requested!</p>
             
             <h2 id="philosophy">Design Philosophy</h2>
 
             <h3>Pure HTML & CSS Output</h3>
             <p>The output files are ready for your browser to render without executing any JavaScript.</p>
-            <p>Of course, you can add any browser JavaScript you like, and if NakedJSX builds that code for you then it can use JSX to create DOM nodes.</p>
+            <p>Of course, you can add any browser JavaScript you like, and if NakedJSX builds that code then will be able to use inline JSX to create DOM nodes.</p>
             
             <h3>Low-Friction</h3>
             <p>NakedJSX doesn't require the setting up and maintaining of a Node.js project. Just create the site files and run the npx command to build.</p>
 
-            <h3>API Stability (After 1.0.0 Release)</h3>
-            <p>NakedJSX sites will continue build with newer versions of NakedJSX.</p>
-            <p>
-                The nature of <Inline>npx</Inline> is that it will always be possible to specify a NakedJSX version to use: <Inline>npx nakedjsx@0.10</Inline> will 
-                use latest 0.10.x version, <Inline>npx nakedjsx@0.10.0</Inline> will use version 0.10.0, <Inline>npx nakedjsx@1</Inline> will use latest version 1.x.y, etc.
-            </p>
+            <h3>API Stability (After 1.0 Release)</h3>
+            <p>Sites should continue build with newer versions of NakedJSX.</p>
             
             <h3>Conservative Dependency Choices</h3>
             <p>
                 Where practical, required functionality is implemented directly within NakedJSX.
-                In other cases, well known and well maintained external dependencies are chosen.
+                In other cases, well known external dependencies are chosen.
             </p>
             
             <h3>Security Compliance</h3>
-            <p>Supported versions of NakedJSX will be patched to maintain a state of zero of npm audit findings.</p>
+            <p>Supported versions of NakedJSX will aim for an ongoing state of zero npm audit findings.</p>
 
             <h2 id="acknowledgments">Dependencies & Acknowledgments</h2>
-            <p>NakedJSX would not exist without these projects. If you find NakedJSX useful, please consider supporting them.</p>
+            <p>NakedJSX relies on these projects for core functionality. Please consider supporting them if you rely on NakedJSX.</p>
 
-            <Dep name="Babel" url="https://babeljs.io" donate="https://opencollective.com/babel" plugins="Plus @babel/generator, @babel/plugin-transform-react-jsx plugins, and the @babel/preset-env preset.">
+            <Dep name="Babel" url="https://babeljs.io" donate="https://opencollective.com/babel" plugins="Plus @babel/generator and @babel/plugin-transform-react-jsx plugins, and the @babel/preset-env preset.">
                 <ul>
                     <li>Transpilation of JSX to JavaScript</li>
                     <li>Hosting several NakedJSX plugins</li>
@@ -171,9 +210,9 @@ const Body =
                 </ul>
             </Dep>
             <Dep name="React" url="https://react.dev">
-                NakedJSX does not use React, but the excellent ideas and work of the React team must be acknowledged.
+                NakedJSX does not use React, but the excellent ideas and work of the engineers at Meta (who created JSX!) must be acknowledged.
             </Dep>
-            <Dep name="Rollup" url="https://rollupjs.org" doante="https://opencollective.com/rollup" plugins="Plus @rollup/plugin-babel, @rollup/plugin-dynamic-import-vars, and @rollup/plugin-inject plugins.">
+            <Dep name="Rollup" url="https://rollupjs.org" doante="https://opencollective.com/rollup" plugins="Plus @rollup/plugin-babel and @rollup/plugin-inject plugins.">
                 <ul>
                     <li>Production of self-contained JavaScript bundles</li>
                     <li>Hosting NakedJSX plugins</li>
@@ -194,13 +233,19 @@ const Body =
                 I designed and built NakedJSX by following my curiosity and I hope that you find it useful.
             </p>
             <p>
-                You can reach me via <a href="mailto:contact@nakedjsx.com">Email</a>
-                , <a href="https://www.linkedin.com/in/davidqhogan/">LinkedIn</a>
-                , and at the <a href="https://discord.gg/BXQDtub2fS">NakedJSX Discord Server</a>.
-                I would welcome any feedback.
+                You can reach me at:
             </p>
+            <ul>
+                <li><a href="mailto:contact@nakedjsx.org">contact@nakedjsx.org</a></li>
+                <li><a href="https://www.linkedin.com/in/davidqhogan/">LinkedIn</a></li>
+                <li><a href="https://discord.gg/BXQDtub2fS">The NakedJSX Discord Server</a></li>
+            </ul>
             <p>
-                I am based in Melbourne, Australia, and will soon be available for hybrid or remote work. My primary languages are C, C++, Java, JavaScript, and I am ideally suited to a hands-on role leading a small, high performance team.
+                By the way ...
+            </p>
+            <p>I am based in Melbourne, Australia, and will soon be available for hybrid or remote work.
+                My <em>primary</em> languages are C, C++, Java, JavaScript, and I have deployed on AWS for well over a decade.
+                I am ideally suited to a hands-on role leading a small, high performance team.
             </p>
         </main>
     </>
