@@ -1,4 +1,4 @@
-# NakedJSX Documentation.
+# NakedJSX Website Source.
 
 This is the source project for the [NakedJSX website](https://nakedjsx.org).
 
