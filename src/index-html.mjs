@@ -7,7 +7,7 @@ import { Inline, Analytics } from '$DOC_SRC/common.jsx'
 import { Example } from '$DOC_SRC/example.jsx'
 
 const title = "Static Site Generator";
-const description = "NakedJSX is an open-source npx command for generating static websites from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
+const description = "Nakedjsx is a command-line tool for generating static websites from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
 
 const Head =
     () =>
