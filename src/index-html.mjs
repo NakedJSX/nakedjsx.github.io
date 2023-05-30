@@ -3,7 +3,7 @@ import { Page } from '@nakedjsx/core/page'
 import logo from ':raw:$DOC_ASSET/logo.svg'
 import prismTheme from ':raw:@nakedjsx/plugin-asset-prism/theme.css';
 
-import { Inline, Analytics } from '$DOC_SRC/common.jsx'
+import { Inline, Inset, Analytics } from '$DOC_SRC/common.jsx'
 import { Example } from '$DOC_SRC/example.jsx'
 
 const title = "Static Site Generator";
@@ -67,15 +67,6 @@ Page.AppendCss('body { font-family: sans-serif }');
 Page.AppendHead(<title>Hello NakedJSX</title>);
 Page.AppendBody(<BodyContent title="Hello NakedJSX" />);
 Page.Render();`;
-
-const Inset =
-    ({ children }) =>
-    <p css={`
-        padding: var(--gap-three-eighths-2) var(--gap);
-        background-color: var(--code-bg-color);
-    `}>
-        {children}
-    </p>
 
 const Body =
     () =>
