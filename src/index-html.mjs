@@ -234,7 +234,8 @@ const Body =
                 By the way ...
             </p>
             <p>I am based in Melbourne, Australia, and will soon be available for hybrid or remote work.
-                My <em>primary</em> languages are C, C++, Java, JavaScript, and I have deployed on AWS for well over a decade.
+                My <em>primary</em> languages are C, C++, Java, JavaScript, and I have managed deployment
+                infrastructure on AWS for well over a decade.
             </p>
         </main>
     </>
