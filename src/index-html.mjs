@@ -7,7 +7,7 @@ import { Inline, Analytics } from '$DOC_SRC/common.jsx'
 import { Example } from '$DOC_SRC/example.jsx'
 
 const title = "Static Site Generator";
-const description = "Nakedjsx is a command-line tool for generating static websites from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
+const description = "NakedJSX is a command-line tool for generating static websites from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
 
 const Head =
     () =>
@@ -86,7 +86,7 @@ const Body =
             <Inset>
                 This is an overview. Please refer to the <a href="documentation">documentation</a> for a detailed look at each feature.
             </Inset>
-            <p>This page was built by NakedJSX. You can look at its <a href={'https://github.com/NakedJSX/nakedjsx.github.io/blob/main/src/index-html.mjs'}>source</a>.</p>
+            <p>This page was built using NakedJSX. You can look at its <a href={'https://github.com/NakedJSX/nakedjsx.github.io/blob/main/src/index-html.mjs'}>source</a>.</p>
             
             <h2>At a Glance</h2>
             <p>Generate static HTML files from JSX by running an npx command.</p>
@@ -116,7 +116,7 @@ const Body =
                 <p>If you build it without the <Inline>--pretty</Inline> flag, the result is tightly packed and suitable for distribution:</p>
             </Example>
             <p>If you build with the <Inline>--dev</Inline> flag then a live-refresh development webserver will be started.</p>
-            <p>Having a simple way to build HTML files from JSX is a good start, but NakedJSX can a lot more.</p>
+            <p>Having a simple way to build HTML files from JSX is a good start, but NakedJSX can do a lot more.</p>
             
             <h2 id="features">Features</h2>
             <ul>
@@ -143,11 +143,10 @@ const Body =
             </Inset>
 
             <h2>Project Status</h2>
-            <p>NakedJSX is subject to design changes until version 1.0.</p>
-            <p>Until then breaking changes will be linked to Y increments in X.Y.Z. Breaking changes after 1.0 will be linked to increments in X and will be avoided if possible.</p>
-            <p>Detailed release announcements are currently made on the <a href="https://discord.gg/BXQDtub2fS">NakedJSX Discord Server</a> - you are invited to join it.</p>
+            <p>NakedJSX works well, but is subject to design changes until version 1.0. Feedback is very welcome!</p>
+            <p>Until then, breaking changes will be linked to Y increments in X.Y.Z. Breaking changes after 1.0 will be linked to increments in X and will be avoided if possible.</p>
+            <p>Detailed release announcements are currently made on the <a href="https://discord.gg/BXQDtub2fS">NakedJSX Discord Server</a> - please feel free to join.</p>
             <p>You can also get in touch via <a href="mailto:contact@nakedjsx.org">contact@nakedjsx.org</a>.</p>
-            <p>Your feedback is requested!</p>
             
             <h2 id="philosophy">Design Philosophy</h2>
 
@@ -159,7 +158,7 @@ const Body =
             <p>NakedJSX doesn't require the setting up and maintaining of a Node.js project. Just create the site files and run the npx command to build.</p>
 
             <h3>API Stability (After 1.0 Release)</h3>
-            <p>Sites should continue build with newer versions of NakedJSX.</p>
+            <p>Sites should continue to build with newer versions of NakedJSX.</p>
             
             <h3>Conservative Dependency Choices</h3>
             <p>
@@ -171,7 +170,7 @@ const Body =
             <p>Supported versions of NakedJSX will aim for an ongoing state of zero npm audit findings.</p>
 
             <h2 id="acknowledgments">Dependencies & Acknowledgments</h2>
-            <p>NakedJSX relies on these projects for core functionality. Please consider supporting them if you rely on NakedJSX.</p>
+            <p>NakedJSX relies on these projects for core functionality. Please consider supporting them.</p>
 
             <Dep name="Babel" url="https://babeljs.io" donate="https://opencollective.com/babel" plugins="Plus @babel/generator and @babel/plugin-transform-react-jsx plugins, and the @babel/preset-env preset.">
                 <ul>
@@ -226,7 +225,7 @@ const Body =
 
             <h2 id="author">Project Owner</h2>
             <p>
-                Hello, I'm David Hogan. Since 1999 I have been a professional software engineer, a startup/scaleup CTO,
+                Hello, I'm David Hogan. Since 1999 I have been a professional software engineer, startup/scaleup CTO,
                 and everything in between. I am a current member of the VICE (Commodore 8-bit computer emulator) development team.
             </p>
             <p>
@@ -245,7 +244,6 @@ const Body =
             </p>
             <p>I am based in Melbourne, Australia, and will soon be available for hybrid or remote work.
                 My <em>primary</em> languages are C, C++, Java, JavaScript, and I have deployed on AWS for well over a decade.
-                I am ideally suited to a hands-on role leading a small, high performance team.
             </p>
         </main>
     </>
