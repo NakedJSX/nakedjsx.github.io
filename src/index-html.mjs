@@ -75,7 +75,7 @@ const Body =
             <h1><raw-content content={logo} /> {title}</h1>
             <p>{description}</p>
             <Inset>
-                This is an overview. Please refer to the <a href="documentation">documentation</a> for a detailed look at each feature.
+                This is an overview. Please refer to the <a href="documentation/">documentation</a> for a detailed look at each feature.
             </Inset>
             <p>This page was built using NakedJSX. You can look at its <a href={'https://github.com/NakedJSX/nakedjsx.github.io/blob/main/src/index-html.mjs'}>source</a>.</p>
             
@@ -130,7 +130,7 @@ const Body =
             </ul>
 
             <Inset>
-                You can find detailed information in the <a href="documentation">documentation</a>.
+                You can find detailed information in the <a href="documentation/">documentation</a>.
             </Inset>
 
             <h2>Project Status</h2>
