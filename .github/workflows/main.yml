@@ -1,6 +1,8 @@
 name: Build and Deploy
-on: 
-  workflow_dispatch:
+on:
+  push:
+    branches:
+      - main
 concurrency:
   group: Build and Deploy
   cancel-in-progress: true
