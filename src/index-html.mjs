@@ -6,8 +6,8 @@ import prismTheme from ':raw:@nakedjsx/plugin-asset-prism/theme.css';
 import { Inline, Inset, Analytics } from '$DOC_SRC/common.jsx'
 import { Example } from '$DOC_SRC/example.jsx'
 
-const title = "Static Site Generator";
-const description = "NakedJSX is a command-line tool for generating static websites from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
+const titleSuffix = "- Use JSX without React";
+const description = "NakedJSX is a command-line tool for generating websites from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
 
 const Head =
     () =>
@@ -17,9 +17,9 @@ const Head =
         <meta name="description" content={description}></meta>
         <meta property="og:type" content="website"></meta>
         <meta property="og:url" content="https://nakedjsx.org"></meta>
-        <meta property="og:title" content={`NakedJSX - ${title}`}></meta>
+        <meta property="og:title" content={`NakedJSX ${titleSuffix}`}></meta>
         <meta property="og:description" content={description}></meta>
-        <title>{`NakedJSX - ${title}`}</title>
+        <title>{`NakedJSX ${titleSuffix}`}</title>
         <Analytics />
     </>
 
@@ -57,22 +57,27 @@ const BodyContent =
     ({ title }) =>
     <>
         <h1 css="color: fuchsia">{title}</h1>
-        <p css="color: #ff00ff">
-            You might not need a single page app?
-        </p>
     </>
+
+const ClientJsx =
+    () =>
+    <p css="color: #ff00ff">
+        You might not need a single page app?
+    </p>
 
 Page.Create('en');
 Page.AppendCss('body { font-family: sans-serif }');
 Page.AppendHead(<title>Hello NakedJSX</title>);
 Page.AppendBody(<BodyContent title="Hello NakedJSX" />);
+Page.AppendJs(ClientJsx);
+Page.AppendJs(document.body.appendChild(<ClientJsx />));
 Page.Render();`;
 
 const Body =
     () =>
     <>
         <main>
-            <h1><raw-content content={logo} /> {title}</h1>
+            <h1><raw-content content={logo} /> {titleSuffix}</h1>
             <p>{description}</p>
             <Inset>
                 This is an overview. Please refer to the <a href="documentation/">documentation</a> for a detailed look at each feature.

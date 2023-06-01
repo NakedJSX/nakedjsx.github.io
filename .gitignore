@@ -6,3 +6,4 @@ package.json
 yarn.lock
 dev
 dist
+src/test-page.jsx
