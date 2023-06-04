@@ -3,11 +3,11 @@ import { Page } from '@nakedjsx/core/page'
 import logo from ':raw:$DOC_ASSET/logo.svg'
 import prismTheme from ':raw:@nakedjsx/plugin-asset-prism/theme.css';
 
-import { Inline, Inset, Analytics } from '$DOC_SRC/common.jsx'
+import { Inline, Inset, Tag, Analytics } from '$DOC_SRC/common.jsx'
 import { Example } from '$DOC_SRC/example.jsx'
 
 const titleSuffix = "- Use JSX without React";
-const description = "NakedJSX is a command-line tool for generating websites from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
+const description = "NakedJSX is a command-line tool for generating HTML files from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
 
 const Head =
     () =>
@@ -57,20 +57,40 @@ const BodyContent =
     ({ title }) =>
     <>
         <h1 css="color: fuchsia">{title}</h1>
+        <p css="color: #ff00ff">
+            Building HTML files from JSX feels right.
+        </p>
     </>
-
-const ClientJsx =
-    () =>
-    <p css="color: #ff00ff">
-        You might not need a single page app?
-    </p>
 
 Page.Create('en');
 Page.AppendCss('body { font-family: sans-serif }');
 Page.AppendHead(<title>Hello NakedJSX</title>);
 Page.AppendBody(<BodyContent title="Hello NakedJSX" />);
-Page.AppendJs(ClientJsx);
-Page.AppendJs(document.body.appendChild(<ClientJsx />));
+Page.Render();`;
+
+const exampleSourceJs =
+`import { Page } from '@nakedjsx/core/page'
+
+const BodyContent =
+    ({ title }) =>
+    <>
+        <h1 css="color: fuchsia">{title}</h1>
+        <p css="color: #ff00ff">
+            You might not need a single page app?
+        </p>
+    </>
+
+// Setup the static HTML, without adding <BodyContent>
+Page.Create('en');
+Page.AppendCss('body { font-family: sans-serif }');
+Page.AppendHead(<title>Hello NakedJSX</title>);
+
+// Make the BodyContent JSX function available to browser JavaScript
+Page.AppendJs(BodyContent);
+
+// Add some code that will run when a browser loads the page
+Page.AppendJs(document.body.appendChild(<BodyContent title="Hello NakedJSX" />));
+
 Page.Render();`;
 
 const Body =
@@ -91,28 +111,39 @@ const Body =
             <p>A development mode with a live-refresh build and web server is included.</p>
             <p>
                 NakedJSX provides an <a href="https://github.com/NakedJSX/core/blob/main/runtime/client/jsx.mjs">optional and small runtime</a> allowing JSX
-                to be used by client-side JavaScript. The runtime is automatically injected if needed.
+                to be used by client-side JavaScript. The runtime is automatically injected if needed, and adds around half a kilobyte to the file.
             </p>
             
             <h2 id="a-quick-test">A Two Minute Test</h2>
             <Example captureOutput={['example', 'hello-nakedjsx-pretty']}>
                 <p>If you have Node.js installed, you can try NakedJSX right now. Create a directory called <Inline>src</Inline> with the following file (the filename must end in <Inline>-page.jsx</Inline>):</p>
-                <Example.Src lang="jsx" filename="src/index-page.jsx">{
-                    exampleSource
-                }</Example.Src>
+                <Example.Src lang="jsx" filename="src/index-page.jsx">{exampleSource}</Example.Src>
                 <p>Then open the parent directory in your terminal and run:</p>
                 <Example.BuildCmd />
                 <p>The result is a new subdirectory called <Inline>out</Inline>, which contains a single HTML file:</p>
             </Example>
             <p>Note that the scoped CSS was extracted from the JSX, minified, and then deduplicated.</p>
             <Example buildFlags={[]} wordwrapOutput captureOutput={['example', 'hello-nakedjsx-dist']}>
-                <Example.Src hidden lang="jsx" filename="src/index-page.jsx">{
-                    exampleSource
-                }</Example.Src>
+                <Example.Src hidden lang="jsx" filename="src/index-page.jsx">{exampleSource}</Example.Src>
                 <p>If you build it without the <Inline>--pretty</Inline> flag, the result is tightly packed and suitable for distribution:</p>
             </Example>
             <p>If you build with the <Inline>--dev</Inline> flag then a live-refresh development webserver will be started.</p>
-            <p>Having a simple way to build HTML files from JSX is a good start, but NakedJSX can do a lot more.</p>
+
+            <h2 id="a-quick-test-plus-js">Adding Client JavaScript</h2>
+            <Example captureOutput={['example', 'hello-nakedjsx-js-pretty']}>
+                <p>You can also add client JavaScript that will run in the browser when the page loads. Client JavaScript can also use JSX.</p>
+                <p>Here's the previous example converted to add the same <Tag>BodyContent</Tag> in client JavaScript:</p>
+                <Example.Src lang="jsx" filename="src/index-page.jsx">{exampleSourceJs}</Example.Src>
+                <p>
+                    The output contains a small amount JavaScript to support creating DOM nodes from JSX,
+                    the compiled <Tag>BodyContent</Tag> function, and the code that adds it to the document (all minified):
+                </p>
+            </Example>
+            <Example buildFlags={[]} wordwrapOutput captureOutput={['example', 'hello-nakedjsx-js-dist']}>
+                <Example.Src hidden lang="jsx" filename="src/index-page.jsx">{exampleSourceJs}</Example.Src>
+                <p>Without pretty printing, the result is less than a single kilobyte in size:</p>
+            </Example>
+            <p>Several other ways to add client JavaScript are covered in the <a href="documentation/#client-js">documentation</a>.</p>
             
             <h2 id="features">Features</h2>
             <ul>
@@ -148,7 +179,7 @@ const Body =
 
             <h3>Pure HTML & CSS Output</h3>
             <p>The output files are ready for your browser to render without executing any JavaScript.</p>
-            <p>Of course, you can add any browser JavaScript you like, and if NakedJSX builds that code then will be able to use inline JSX to create DOM nodes.</p>
+            <p>Of course, you can add any client JavaScript you like, and if NakedJSX builds that code then will be able to use inline JSX to create DOM nodes.</p>
             
             <h3>Low-Friction</h3>
             <p>NakedJSX doesn't require the setting up and maintaining of a Node.js project. Just create the site files and run the npx command to build.</p>
