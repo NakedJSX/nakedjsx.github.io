@@ -6,7 +6,7 @@ import prismTheme from ':raw:@nakedjsx/plugin-asset-prism/theme.css';
 import { Inline, Inset, Tag, Analytics } from '$DOC_SRC/common.jsx'
 import { Example } from '$DOC_SRC/example.jsx'
 
-const titleSuffix = "- Use JSX without React";
+const titleSuffix = "Use JSX without React";
 const description = "NakedJSX is a command-line tool for generating HTML files from JSX. The output is pure HTML and CSS - unless you choose to add your own JavaScript."
 
 const Head =
@@ -17,9 +17,9 @@ const Head =
         <meta name="description" content={description}></meta>
         <meta property="og:type" content="website"></meta>
         <meta property="og:url" content="https://nakedjsx.org"></meta>
-        <meta property="og:title" content={`NakedJSX ${titleSuffix}`}></meta>
+        <meta property="og:title" content={`NakedJSX - ${titleSuffix}`}></meta>
         <meta property="og:description" content={description}></meta>
-        <title>{`NakedJSX ${titleSuffix}`}</title>
+        <title>{`NakedJSX - ${titleSuffix}`}</title>
         <Analytics />
     </>
 
