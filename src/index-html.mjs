@@ -19,6 +19,7 @@ const Head =
         <meta property="og:url" content="https://nakedjsx.org"></meta>
         <meta property="og:title" content={`NakedJSX - ${titleSuffix}`}></meta>
         <meta property="og:description" content={description}></meta>
+        <link rel="canonical" href="https://nakedjsx.org" />
         <title>{`NakedJSX - ${titleSuffix}`}</title>
         <Analytics />
     </>
