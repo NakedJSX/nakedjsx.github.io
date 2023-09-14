@@ -1,10 +1,10 @@
-name: Build and Deploy
+name: Update Website
 on:
   push:
     branches:
       - main
 concurrency:
-  group: Build and Deploy
+  group: Update Website
   cancel-in-progress: true
 
 jobs:
@@ -19,13 +19,20 @@ jobs:
           node-version: '18'
           check-latest: true
 
-      - name: Install GraphicsMagick
-        shell: bash
-        run: sudo apt install graphicsmagick
-
       - name: Configuire Git
         shell: bash
         run: git config --global core.autocrlf input
+
+      - name: Install OS dependencies
+        shell: bash
+        run: |
+          sudo apt install graphicsmagick
+
+      - name: Install optional @nakedjsx plugins
+        shell: bash
+        run: |
+          npm install -g @nakedjsx/plugin-asset-prism
+          npm install -g @nakedjsx/plugin-asset-mdx
       
       - name: Checkout Source
         uses: actions/checkout@v3

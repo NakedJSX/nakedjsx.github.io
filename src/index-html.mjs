@@ -3,7 +3,7 @@ import { Page } from '@nakedjsx/core/page'
 import logo from ':raw:$DOC_ASSET/logo.svg'
 import prismTheme from ':raw:@nakedjsx/plugin-asset-prism/theme.css';
 
-import { Inline, Inset, Tag, Analytics } from '$DOC_SRC/common.jsx'
+import { Logo, Inline, Inset, Tag, Analytics } from '$DOC_SRC/common.jsx'
 import { Example } from '$DOC_SRC/example.jsx'
 
 const titleSuffix = "Use JSX without React";
@@ -98,10 +98,10 @@ const Body =
     () =>
     <>
         <main>
-            <h1><raw-content content={logo} /> {titleSuffix}</h1>
+            <h1><Logo /> {titleSuffix}</h1>
             <p>{description}</p>
             <Inset>
-                This is an overview. Please refer to the <a href="documentation/">documentation</a> for a detailed look at each feature.
+                <p>This is an overview. Please refer to the <a href="documentation/">documentation</a> for a detailed look at each feature.</p>
             </Inset>
             <p>This page was built using NakedJSX. You can look at its <a href={'https://github.com/NakedJSX/nakedjsx.github.io/blob/main/src/index-html.mjs'}>source</a>.</p>
             
@@ -150,6 +150,8 @@ const Body =
             <ul>
                 <li>Build HTML files using JSX templates</li>
                 <li>Live-refresh development server</li>
+                <li>Template engine for Express and other HTTP servers</li>
+                <li>TypeScript support (experimental) </li>
                 <li>JSX support for 'ref' and 'children' props</li>
                 <li>JSX parent and child communication via 'context' prop</li>
                 <li>Scoped CSS extraction from JSX</li>
@@ -167,20 +169,18 @@ const Body =
             </ul>
 
             <Inset>
-                You can find detailed information in the <a href="documentation/">documentation</a>.
+                <p>You can find detailed information in the <a href="documentation/">documentation</a>.</p>
             </Inset>
 
             <h2>Project Status</h2>
-            <p>NakedJSX works well, but is subject to design changes until version 1.0. Feedback is very welcome!</p>
-            <p>Until then, breaking changes will be linked to Y increments in X.Y.Z. Breaking changes after 1.0 will be linked to increments in X and will be avoided if possible.</p>
-            <p>Detailed release announcements are currently made on the <a href="https://discord.gg/BXQDtub2fS">NakedJSX Discord Server</a> - please feel free to join.</p>
-            <p>You can also get in touch via <a href="mailto:contact@nakedjsx.org">contact@nakedjsx.org</a>.</p>
+            <p>NakedJSX is approaching version 1.0. Feedback is very welcome!</p>
+            <p>Please join us on the <a href="https://discord.gg/BXQDtub2fS">NakedJSX Discord Server</a> or get in touch via <a href="mailto:contact@nakedjsx.org">contact@nakedjsx.org</a>.</p>
             
             <h2 id="philosophy">Design Philosophy</h2>
 
             <h3>Pure HTML & CSS Output</h3>
             <p>The output files are ready for your browser to render without executing any JavaScript.</p>
-            <p>Of course, you can add any client JavaScript you like, and if NakedJSX builds that code then will be able to use inline JSX to create DOM nodes.</p>
+            <p>Of course, you can add any client JavaScript you like, and if NakedJSX builds that code then it will be able to use inline JSX to create DOM nodes.</p>
             
             <h3>Low-Friction</h3>
             <p>NakedJSX doesn't require the setting up and maintaining of a Node.js project. Just create the site files and run the npx command to build.</p>
@@ -200,7 +200,7 @@ const Body =
             <h2 id="acknowledgments">Dependencies & Acknowledgments</h2>
             <p>NakedJSX relies on these projects for core functionality. Please consider supporting them.</p>
 
-            <Dep name="Babel" url="https://babeljs.io" donate="https://opencollective.com/babel" plugins="Plus @babel/generator and @babel/plugin-transform-react-jsx plugins, and the @babel/preset-env preset.">
+            <Dep name="Babel" url="https://babeljs.io" donate="https://opencollective.com/babel" plugins="Plus @babel/generator, @babel/plugin-syntax-jsx, @babel/plugin-transform-react-jsx plugins, and the @babel/preset-env preset.">
                 <ul>
                     <li>Transpilation of JSX to JavaScript</li>
                     <li>Hosting several NakedJSX plugins</li>
@@ -239,7 +239,7 @@ const Body =
             <Dep name="React" url="https://react.dev">
                 NakedJSX does not use React, but the excellent ideas and work of the engineers at Meta (who created JSX!) must be acknowledged.
             </Dep>
-            <Dep name="Rollup" url="https://rollupjs.org" doante="https://opencollective.com/rollup" plugins="Plus @rollup/plugin-babel and @rollup/plugin-inject plugins.">
+            <Dep name="Rollup" url="https://rollupjs.org" doante="https://opencollective.com/rollup" plugins="Plus @rollup/plugin-babel.">
                 <ul>
                     <li>Production of self-contained JavaScript bundles</li>
                     <li>Hosting NakedJSX plugins</li>
@@ -254,7 +254,7 @@ const Body =
             <h2 id="author">Project Owner</h2>
             <p>
                 Hello, I'm David Hogan. Since 1999 I have been a professional software engineer, startup/scaleup CTO,
-                and everything in between. I am a current member of the VICE (Commodore 8-bit computer emulator) development team.
+                and everything in between. I am currently the CTO at <a href="https://corticallabs.com">Cortical Labs</a> and a member of the VICE (Commodore 8-bit computer emulator) development team.
             </p>
             <p>
                 I designed and built NakedJSX by following my curiosity and I hope that you find it useful.
@@ -263,17 +263,10 @@ const Body =
                 You can reach me at:
             </p>
             <ul>
+                <li><a href="https://discord.gg/BXQDtub2fS">The NakedJSX Discord Server</a></li>
                 <li><a href="mailto:contact@nakedjsx.org">contact@nakedjsx.org</a></li>
                 <li><a href="https://www.linkedin.com/in/davidqhogan/">LinkedIn</a></li>
-                <li><a href="https://discord.gg/BXQDtub2fS">The NakedJSX Discord Server</a></li>
             </ul>
-            <p>
-                By the way ...
-            </p>
-            <p>I am based in Melbourne, Australia, and will soon be available for hybrid or remote work.
-                My <em>primary</em> languages are C, C++, Java, JavaScript, and I have managed deployment
-                infrastructure on AWS for well over a decade.
-            </p>
         </main>
     </>
 
